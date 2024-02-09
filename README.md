@@ -1,64 +1,65 @@
-# terraform-jenkins-eks
-Steps for running the project
+Certainly, here is a reformatted version of the provided steps:
 
-configure aws keys with 
-``aws configure
-``
-or You can add keys in provider and backend for ease 
+1. Configure AWS keys using either:
+   ```
+   aws configure
+   ```
+   Or add keys in the provider and backend for convenience.
 
-``cd Jenkins Server
-``
-create the bucket with the same name first. Make sure the bucket name is same. 
-``
-terraform init
-``
-if the pipeline fails here 
-apply the command as ``terraform init -reconfigure``
+2. Navigate to the Jenkins Server directory:
+   ```
+   cd Jenkins Server
+   ```
 
-``terraform plan``
+3. Create a bucket with the same name as mentioned in the project. Ensure the bucket name is the same.
 
-``terraform apply --auto-approve``
+4. Initialize Terraform:
+   ```
+   terraform init
+   ```
+   If the pipeline fails, reapply with:
+   ```
+   terraform init -reconfigure
+   ```
 
-go to aws console and check the instance 
-Instance with Jenkins server will be up
-Copy the public ip address and run it with port 8080
-connect to ec2 instance and get the password
+5. Plan the Terraform deployment:
+   ```
+   terraform plan
+   ```
 
-now create your user and username password when asked. 
+6. Apply the Terraform changes:
+   ```
+   terraform apply --auto-approve
+   ```
 
-Create a new pipeline, give it a name you like 
+7. Check the AWS console for the deployed instance. Copy the public IP address and access it with port 8080.
 
-Paste the jenkins file from this repo 
+8. Connect to the EC2 instance and retrieve the password.
 
-Save the pipeline
+9. Create your user and set up the username and password when prompted.
 
-Go to credentials, global, and create credentials
+10. Create a new pipeline in Jenkins, providing a name of your choice.
 
-in credentials, create a secret text and add ID as ``AWS_ACCESS_KEY_ID`` and give your access key as secret,  save the file. 
+11. Paste the Jenkinsfile from the repository into the pipeline configuration and save.
 
-again create another secret text and add ID as ``AWS_SECRET_ACCESS_KEY``  and give your secret access keys and save the file. 
+12. In Jenkins credentials, create global credentials:
+    - Create a secret text with ID as `AWS_ACCESS_KEY_ID` and your access key as the secret. Save the credentials.
+    - Create another secret text with ID as `AWS_SECRET_ACCESS_KEY` and your secret access key as the secret. Save the credentials.
 
-run the pipeline. 
+13. Run the pipeline.
 
-if the pipeline fails in init stage 
-apply the command as ``terraform init -reconfigure``
+14. If the pipeline fails at the init stage, apply the command:
+    ```
+    terraform init -reconfigure
+    ```
 
-Solve issues by yourself using chatgpt, stakoverflow. 
+15. Resolve any issues using ChatGPT, StackOverflow, or other resources.
 
- Let me know if you have any doubts then 
+16. If you make changes in the EKS folder, save and commit using Git:
+    ```
+    git add .
+    git commit -m "infra-modified"
+    git push -u origin master
+    ```
 
-
- if you want to change anything in EKS folder save it 
-
- and run this command. 
- ``git add .``
- ``git commit -m "infra-modified``
- ``git push -u origin master``
-
- 
-
-
-
-
-
-
+Feel free to ask if you have any doubts.
